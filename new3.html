@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>最後にreverseする</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+	function toOneDimension(previousValue, currentValue) {
+	    return previousValue.concat(currentValue);
+	}
+	var sampleArrayA = [
+	    ['A1','A2','A3'],
+	    ['B1','B2','B3'],
+	    ['C1','C2','C3']
+	];
+
+	/*読み込んでから逆順にして書き出すので、処理回数が増える
+	配列コピー→配列の並びを逆にする→配列を結合する　という流れ
+	データが増えた時にパフォーマンスが低下する恐れあり*/
+	var sampleArrayB = sampleArrayA
+	    .slice()      // 元配列コピー
+	    .reverse()    // 配列の順序だけ逆
+	    .reduce(toOneDimension);
+
+	for (var counterVar =0;counterVar<sampleArrayB.length;counterVar++) {
+	    document.write('sampleArrayB['+counterVar+']:');
+	    document.write(sampleArrayB[counterVar]);
+	    document.write('<br/>');
+	}
+	</script>
+	
+</body>
+</html>
