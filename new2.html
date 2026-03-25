@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>concatの順番を変える</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		/*function toOneDimension(previousValue, currentValue) {
+			return previousValue.concat(currentValue);
+		}から、previousValueに変更して結合の順番を逆にする
+		※可読性が低い・毎回前に割り込む形の処理になる
+		*/
+		function toOneDimension(previousValue, currentValue) {
+			return currentValue.concat(previousValue);
+		}
+		var sampleArrayA = [
+			['A1','A2','A3'],
+			['B1','B2','B3'],
+			['C1','C2','C3']
+		];
+
+		var sampleArrayB = sampleArrayA.reduce(toOneDimension);
+		for (var counterVar =0;counterVar<sampleArrayB.length;counterVar++) {
+			document.write('sampleArrayB['+counterVar+']:');
+			document.write(sampleArrayB[counterVar]);
+			document.write('<br/>');
+		}
+		</script>
+		
+</body>
+</html>
