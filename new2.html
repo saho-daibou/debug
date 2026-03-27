@@ -13,15 +13,30 @@
 		※可読性が低い・毎回前に割り込む形の処理になる
 		*/
 		function toOneDimension(previousValue, currentValue) {
-			return currentValue.concat(previousValue);
+			
+			//以下デバッグ用　コンソールに途中経過表示
+			var result = currentValue.concat(previousValue);
+			console.log("previous:", previousValue);
+		    console.log("current :", currentValue);
+		    console.log("result :", result);
+			console.log("-----");
+					
+			return result;
 		}
 		var sampleArrayA = [
 			['A1','A2','A3'],
 			['B1','B2','B3'],
 			['C1','C2','C3']
 		];
+		
+		//reduce前の確認
+		console.log("元配列:", sampleArrayA);
 
 		var sampleArrayB = sampleArrayA.reduce(toOneDimension);
+		
+		//reduce後、最終結果の確認
+		console.log("結果配列:", sampleArrayB);
+		
 		for (var counterVar =0;counterVar<sampleArrayB.length;counterVar++) {
 			document.write('sampleArrayB['+counterVar+']:');
 			document.write(sampleArrayB[counterVar]);
