@@ -8,7 +8,16 @@
 
 	<script type="text/javascript">
 	function toOneDimension(previousValue, currentValue) {
-	    return previousValue.concat(currentValue);
+		
+		//以下デバッグ用　コンソールに途中経過表示
+	    var result = previousValue.concat(currentValue);
+
+	    console.log("previous:", previousValue);
+	    console.log("current :", currentValue);
+	    console.log("result  :", result);
+	    console.log("-----");
+
+	    return result;
 	}
 	var sampleArrayA = [
 	    ['A1','A2','A3'],
@@ -19,10 +28,30 @@
 	/*読み込んでから逆順にして書き出すので、処理回数が増える
 	配列コピー→配列の並びを逆にする→配列を結合する　という流れ
 	データが増えた時にパフォーマンスが低下する恐れあり*/
+	
+	//reduce前の確認
+	console.log("元配列:", sampleArrayA);
+	
+	//① slice（コピー）
+	var copiedArray = sampleArrayA.slice();
+	console.log("slice後:", JSON.stringify(copiedArray));
+
+	//② reverse（配列の順序のみ逆転）
+	var reversedArray = copiedArray.reverse();
+	console.log("reverse後:", JSON.stringify(reversedArray));
+
+	//③ reduce（結合）
+	var sampleArrayB = reversedArray.reduce(toOneDimension);
+
+	//最終結果
+	console.log("結果配列:", sampleArrayB);
+			
+	/*
 	var sampleArrayB = sampleArrayA
 	    .slice()      // 元配列コピー
 	    .reverse()    // 配列の順序だけ逆
 	    .reduce(toOneDimension);
+	*/
 
 	for (var counterVar =0;counterVar<sampleArrayB.length;counterVar++) {
 	    document.write('sampleArrayB['+counterVar+']:');
