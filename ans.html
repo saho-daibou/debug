@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修正版</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function toOneDimension(previousValue, currentValue) { 
+			
+			//以下デバッグ用　コンソールに途中経過表示
+			console.log("previous:", previousValue);
+			console.log("current :", currentValue);
+			console.log("result  :", currentValue.concat(previousValue));
+			console.log("-----");
+					
+			return previousValue.concat(currentValue);
+		}
+		var sampleArrayA = [
+			['A1','A2','A3','A4'],
+			['B1','B2','B3','B4'],
+			['C1','C2','C3','C4'],
+			['D1','D2','D3','D4'],
+			['E1','E2','E3','E4']
+		];
+		
+		console.log("元配列:", sampleArrayA);
+		
+		/*var sampleArrayB = sampleArrayA.reduce(toOneDimension);から、
+		reduceRightに変更して配列の末尾から処理するように変更*/
+		var sampleArrayB = sampleArrayA.reduceRight(toOneDimension);
+		
+		console.log("結果配列:", sampleArrayB);
+
+		for (var counterVar =0;counterVar<sampleArrayB.length;counterVar++) {
+			document.write('sampleArrayB['+counterVar+']:');
+			document.write(sampleArrayB[counterVar]);
+			document.write('<br/>');
+		}
+		</script>
+		
+</body>
+</html>
